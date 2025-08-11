@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  webhook-service:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - API_KEY=${API_KEY}
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - EXTERNAL_API_KEY=${EXTERNAL_API_KEY}
+      - EXTERNAL_API_URL=${EXTERNAL_API_URL}
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 30s
+      retries: 3
+
+volumes:
+  redis-data:
