@@ -26,6 +26,7 @@ A robust, asynchronous webhook microservice built with FastAPI to integrate with
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Laurentx1/Python-Microservice-for-n8n-Webhook-Integration/n8n-webhook-service.git
+   git clone https://github.com/Laurentx1/Python-Microservice-for-n8n-Webhook-Integration.git
 
    cd n8n-webhook-service
+
